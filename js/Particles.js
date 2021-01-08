@@ -14,9 +14,9 @@
                 v = i[w - 1];
             return {
                 l: w,
-                z: o(v, "zIndex", 999),
-                o: o(v, "opacity", 0.7),
-                c: o(v, "color", "187 255 255"),
+                z: o(v, "zIndex", -2),
+                o: o(v, "opacity", 1),
+                c: o(v, "color", "248 248 255"),
                 n: o(v, "count", 200)
             }
         }
