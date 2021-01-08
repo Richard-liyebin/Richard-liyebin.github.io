@@ -50,7 +50,7 @@ input: GFM                            # use Github Flavored Markdown !important
 disqus_username: _Lee Bruce_
 
 # Duoshuo settings
-duoshuo_username: _huxblog_
+duoshuo_username: huxblog
 # Share component is depend on Comment so we can NOT use share only.
 duoshuo_share: false                   # set to false if you want to use Comment without Sharing
 
