@@ -2,7 +2,7 @@
 layout:     post
 title:      "chrome 调试技巧"
 subtitle:   "chrome 调试"
-date:       2020-12-1
+date:         2020-09-22
 author:     "Lyb"
 header-img: "img/post-bg-unix-linux.jpg"
 tags:

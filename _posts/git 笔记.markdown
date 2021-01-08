@@ -2,7 +2,7 @@
 layout:     post
 title:      "Git 笔记"
 subtitle:   "git基本指令"
-date:       2020-11-8
+date:       2020-11-08
 author:     "Lyb"
 header-img: "img/post-bg-unix-linux.jpg"
 tags:

@@ -1,0 +1,11 @@
+---
+layout:     post
+title:      "JS基础"
+subtitle:   "12.BOM对象（2）"
+date:       2020-11-08
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - JavaScript
+---

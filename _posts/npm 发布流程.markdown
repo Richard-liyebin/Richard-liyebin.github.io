@@ -2,7 +2,7 @@
 layout:     post
 title:      "NPM 发布流程"
 subtitle:   "nmp发布"
-date:       2020-11-8
+date:       2020-11-08
 author:     "Lyb"
 header-img: "img/post-bg-unix-linux.jpg"
 tags:

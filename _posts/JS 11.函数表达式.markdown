@@ -2,7 +2,7 @@
 layout:     post
 title:      "JS基础"
 subtitle:   "11.函数表达式"
-date:       2020-11-3
+date:       2020-11-03
 author:     "Lyb"
 header-img: "img/post-bg-unix-linux.jpg"
 tags:

@@ -2,7 +2,7 @@
 layout:     post
 title:      "Git 团队开发流程"
 subtitle:   "团队开发随笔"
-date:       2020-11-8
+date:       2020-11-08
 author:     "Lyb"
 header-img: "img/post-bg-unix-linux.jpg"
 tags:

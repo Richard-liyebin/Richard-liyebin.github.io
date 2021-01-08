@@ -2,7 +2,7 @@
 layout:     post
 title:      "CSS 笔记心得"
 subtitle:   "css选择器"
-date:       2020-11-8
+date:       2020-11-08
 author:     "Lyb"
 header-img: "img/post-bg-unix-linux.jpg"
 tags:
