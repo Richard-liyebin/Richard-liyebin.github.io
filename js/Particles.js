@@ -63,6 +63,7 @@
                 y: null,
                 max: 20000
             };
+        console.log('aaaa');
         u.id = c;
         u.style.cssText = "position:fixed;top:0;left:0;z-index:" + s.z + ";opacity:" + s.o;
         j("body")[0].appendChild(u);
