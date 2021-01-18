@@ -1,0 +1,148 @@
+---
+layout:     post
+title:      "JS基础"
+subtitle:   "13.JS事件"
+date:       2020-11-08
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - JavaScript
+---
+
+### JS 事件
+
+   + 一.事件流
+
+        js事件流是描述页面接收事件的顺序，分为事件冒泡和事件捕获两种
+
+        DOM事件流包括三个阶段 ：1.事件捕获阶段 2.目标阶段 3.事件冒泡阶段
+
+                    在DOM事件流中，我们的目标元素div在捕获阶段不会接收到事件，意味着在捕获阶段事件从document到html到body结束
+                    然后在目标阶段div元素执行我们的事件，是冒泡阶段的一部分
+                    最后进行事件冒泡
+
+   + 二.事件处理程序
+
+        1.HTML事件处理程序
+        ````
+        像这样，嵌入在html标签的属于HTML事件处理程序
+        <input type='text' value='click me' onclick="do(a,b)">
+
+        <script>
+            function do(a,b){
+            .....
+            }
+        </script>
+
+        移除我们的事件处理函数的方式
+
+        btn.onclick = null;
+
+        ````
+
+        2.DOM事件处理程序(addEventListener,removeEventListener)
+        ````
+        a.DOM0级事件处理：
+        var btn = document.getElementById('mybtn')
+        btn.onclick = function(){
+            alert(this.id)
+        }
+        此时的this指向的是btn这个元素
+
+
+        b.DOM2级事件处理：
+        var btn = document.getElementById('mybtn')
+        btn.addEventListener('click',function(){
+            alert(this.id)
+        },false)
+
+        btn.addEventListener('click',function(){
+            alert('hello world')
+        },false)
+        参数为true，表示该事件在事件捕获阶段被触发
+        参数为false，表示该事件在事件冒泡阶段被触发
+        同时定义多个同类型函数时，会按照定义先后进行顺序触发
+        清除这个方法我们使用removeEvenListener('name',function(){},boolean)进行触发
+
+        注意：
+
+        btn.addEventListener('click',function(){
+            alert('hello world')
+        },false)
+        btn.removeEventListener('click',function(){
+            alert('hello world')
+        },false)
+
+        这样的移除是没有用的！！！
+
+        只有把  function(){
+                    alert('hello world')
+                }
+        拿出来 
+
+        让 let fuc = function(){...}
+        btn.addEventListener('click',fuc,false)
+        btn.removeEventListener('click',fuc,false)
+
+        这样的移除才是有效的！！！
+        ````
+
+        3.IE事件处理程序(attachEvent,detachEvent)
+        
+        ````
+         var btn = document.getElementById('mybtn')
+         btn.attachEvent('onclick',function(){
+             alert(this.id)
+         })
+
+
+        注意:
+        IE事件处理程序和DOM的最大区别是！：
+        在事件中的this，DOM指向的是当前作用域，而IE指向的是window全局！！！！！
+        因此，在跨浏览器的代码时尤其注意!
+
+
+        ````
+
+        4.跨浏览器的事件处理程序（EventUtil对象的addHandler和removeHandler）
+
+        ````
+        接收三个参数（element要操作的元素，type事件名称，handler事件处理函数）
+
+        定义方法：
+
+        var hander = function(){
+            alert('hello world')
+        }
+        var EventUtil = {
+                addHander : function(element,type,handler){
+                            if(element.addEventListener){
+                                element.addEventListener(type,handler,false)
+                            }else if(element.attachEvent){
+                                element.attachEvent('on'+type,handler)
+                            }else{
+                                element['on'+type] = handler
+                            }
+                }
+                removeHander : function(element,type,handler){
+                            if(element.removeEventListener){
+                                element.removeEventListener(type,handler,false)
+                            }else if(element.detachEvent){
+                                element.detachEvent('on'+type,handler)
+                            }else{
+                                element['on'+type] = null
+                            }
+            }
+
+        使用：
+        var btn = document.getElementById('mybtn')
+        EventUtil.addHandler(btn,'click',handler)
+        EventUtil.removeHandler(btn,'click',handler)
+
+
+        理解：这个对象的两个方法综合了我们的HTML事件处理，DOM事件处理，IE事件处理三种方法，去一一检测，如果有，就使用，没有就换一种方法即可
+
+        不足之处在于，还是没有解决在不同浏览器下的this指向问题，但是对于添加和删除事件处理程序，是完全可以的！！
+        ````
+        
