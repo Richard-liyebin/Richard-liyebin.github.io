@@ -1,0 +1,21 @@
+---
+layout:     post
+title:      "CSS 笔记心得"
+subtitle:   "css的一些小技巧"
+date:        2020-11-08
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - CSS
+---
+
+### CSS 小技巧
+
++  >1. text-align:justify 可以实现input框的居中对齐，或者是文本的两端对齐
+https://www.jianshu.com/p/54209fad34b8
+
+
+  ````
+
+  ````

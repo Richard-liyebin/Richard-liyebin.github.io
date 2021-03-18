@@ -1,0 +1,15 @@
+---
+layout:     post
+title:      "HTML基础"
+subtitle:   "HTML基础知识"
+date:       2020-11-08
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - HTML
+---
+
+### HTML基础
+
++  html标签分为单标签和双标签，单标签也叫做空标签（空元素），例如<br/>
