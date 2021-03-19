@@ -96,3 +96,35 @@ str.trimLeft() //返回'hello world '
 str.toUpperCase()即可
 
 ````
+
+
+#### ES6字符串新增方法
+ 
+  ##### 1.查找某个字符串中的某个字符includes(), startsWith(), endsWith()
+  ````
+   这三个方法都是返回一个布尔值
+   1.str.includes('xx')  找字符串str中是否存在xx，存在返回true，不在返回false
+   2.str.startWith() endWith() 分别找字符串开头和结尾是否存在字符，存在返回true，不存在返回false
+  ````
+  ##### 2.字符串复制 repeat()
+
+  ````
+  repeat方法返回一个新字符串
+  str.repeat(2)  //复制str2次并生成一个新字符串！
+  ````
+  ##### 3.字符串补全 padStart(a,b)，padEnd(a,b)
+
+  ````
+  1.str.padStart(a,b)  //a表示字符str从头开始补全后的长度，b表示用什么字符串进行补全
+  eg： 'abc'.padStart(10,'xxx') //返回 'xxxxxxxabc' 从头开始补足10位长度
+  ````
+
+  ##### 4.匹配全部 replaceAll()
+
+  ````
+      str.replace('/[0-9]/g','aaa')
+
+      可以替换为 str.replaceAll('/[0-9]/','aaa')
+      就不需要去做全局匹配，自动进行全局匹配
+
+  ````
