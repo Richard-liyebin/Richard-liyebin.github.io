@@ -1,0 +1,42 @@
+---
+layout:     post
+title:      "TypeScript"
+subtitle:   "ts笔记(函数)"
+date:        2020-03-23
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - TypeScript
+---
+
+### 函数
+ 
+ #### 1.函数声明
+    
+     ````
+     基本函数有两种声明方式，第一种是函数声明，第二种是函数表达式
+
+
+     1.function fun(a,b){
+       return a+b
+     }
+
+      function fun(a:string,b:number):string{
+        return a+b
+      }
+    
+     2.let fun = function (a,b) {
+       return a+b
+     }
+      let fun = function (a:string,b:number):string {
+       return a+b
+     }
+
+
+     注意： 1.参数个数声明完成后，必须全部传递，且类型正确，不可以漏传或者多传参数。
+            2.如果要有可选参数的时候，则在参数后面加一个？
+              function fun(a:string,b?:number):string{
+               return a+b
+              }
+     `````

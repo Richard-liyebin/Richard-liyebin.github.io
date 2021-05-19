@@ -1,0 +1,72 @@
+---
+layout:     post
+title:      "TypeScript"
+subtitle:   "ts笔记(类)"
+date:        2020-03-23
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - TypeScript
+---
+
+
+### 1.类
+````
+class myClass {
+  //自身的属性需要进行类型定义
+  name: string
+  age: number
+  constructor(name: string, age: number) {
+    this.name = name,
+      this.age = age
+  }
+  showdetail() {
+    console.log(`my name is ${this.name}, i am ${this.age} years old,my address is ${myClass.address}`)
+  }
+  //静态属性
+  static address: string = 'cdc'
+  //静态方法
+  static myaddress() {
+    console.log(`myaddress is ${this.address}`)
+  }
+}
+let A = new myClass('lyb', 23);//调用constructor构造函数
+A.showdetail()
+myClass.myaddress()
+````
+
+### 2.继承
+````
+class sonClass extends myClass {
+  sex: string
+  constructor(name: string, age: number, sex: string) {
+    super(name, age)//这就是父类构造函数，还需要父类的参数，要定义在constructor中
+    this.sex = sex
+  }
+}
+
+````
+
+
+
+
+
+#### 总结：
+   > 1.class类中的属性分为静态属性和实例属性，方法也分为类方法（静态方法），和实例方法
+    静态属性和方法只能类本身直接调用，实例属性和实例方法，可以在构造函数中，进行使用
+
+   >2.constructor被称为构造函数，当我们每次 new xx() 时进行调用constructor，这个时候，
+    constructor(name:string,age:number),是在new xx('lyb',23)所传递过来，并执行constructor内部的函数代码
+
+   >3.this的指向，类中的this指向当前实例，当被调用是，this被谁调用，就指向谁
+
+   >4.super代表的就是我们继承的父类，特别注意的是，当我们使用了继承，又需要自己定义实例属性，则调用constructor（），
+    但是我们的父类已经被继承，它会把我们在子类的constructor看作重写父类的constructor，所以我们需要在子类的consructor中
+    加入super(),代表父类，内部的参数则是父类的实例属性,所以需要传入在子类构造函数constructor中！！，很重要的理解！！！
+
+   >5.抽象类的概念，在类名前面加上abstract，表示这个类是一个抽象类，相当于模板，里面的方法，也没有任何语句，用于子类的继承，子类必须继承
+    并且，需要重写里面的抽象方法！！
+
+  >6.特别注意，我们的class myClass{ name:string ...constructor(name:string)} ,两个name可一点关系也没有，第一个是class类中的实例属性
+    第二个是我们在newXXX(name)的时候，调用构造函数constructor(),传递过来的name！！！！注意理解

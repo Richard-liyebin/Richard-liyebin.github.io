@@ -1,0 +1,21 @@
+---
+layout:     post
+title:      "Vue基础"
+subtitle:   ""
+date:        2020-03-23
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - 
+---
+ 
+ ### 1.Vue 前言基础
+        
+
+ ```
+   1. 开发版本和生产版本的差别在哪？
+            开发版本代码未经过压缩，警告和打印都存在
+            生产版本在发布时使用，体积更小，代码经过压缩
+
+ ```

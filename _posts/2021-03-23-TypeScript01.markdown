@@ -1,0 +1,42 @@
+---
+layout:     post
+title:      "TypeScript"
+subtitle:   "ts笔记(变量)"
+date:        2020-03-23
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - TypeScript
+---
+
+
+  #### 1.数字
+  > let num : number = 12;
+  #### 2.布尔值
+  > let bool : boolean = true
+  #### 3.字符串
+  > let str : string = 'abc'
+  #### 4.数组
+  > let arr : number[] = [1,2,3,4]
+  > let arr2 : string[] = ['a','b','c']
+  > let arr3 : Array<string> = ['a','b','c'] 泛型声明
+  #### 5.元组(固定了长度的数组)tuple
+  > let x : [string,number] 代表元组x 长度2的数组，且第一个元素类型string 第二个元素类型为number
+
+  > 当访问一个越界的元素，会使用联合类型替代,即元组里的类型会默认认为是一个联合类型，例如  x[5] = 'mytext' x[6]=1111;只要满足 [string|number] 即可！
+  #### 6.枚举enum
+  > enum Name {LYB,LQD,MHT}
+  > let name:Name = Name.LYB // 输出0
+  > 枚举类型如果都没有进行赋值，那么所有的枚举类型从0开始，自增长,如果赋予默认值，如果第一个变量赋予默认值，后面都需要赋予默认值。
+
+  #### 7. any 
+  > let a : any = [ 'a',1,[1,2,3] ] 当变量无法确定类型时或者需要根据输入来确定类型，设置为any，当你只知道一部分数据的类型时，any类型也是有用的。 比如，你有一个数组，它包含了不同的类型的数据
+
+  #### 8.void 无返回值(一般函数可使用，其他没啥大用处)
+  > function warnUser(): void {
+      console.log("This is my warning message");
+    }   
+
+  #### 9 object 表示非原始类型，也就是除number，string，boolean，symbol，null或undefined之外的类型。
+  > let a : object = {}  

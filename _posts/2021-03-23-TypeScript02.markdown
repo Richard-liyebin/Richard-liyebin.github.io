@@ -1,0 +1,84 @@
+---
+layout:     post
+title:      "TypeScript"
+subtitle:   "ts笔记(接口)"
+date:        2020-03-23
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - TypeScript
+---
+
+ > 描述一个对象的类型
+ ````
+  type myType = {
+    name: string,
+    age: number,
+    ifmarry:boolean
+  }
+  const myDetail: myType = {
+    name: 'lyb',
+    age: 23,
+    ifmarry:false
+  }
+  ````
+
+  >接口形式用于定义一个类的结构，接口中所有的属性和方法，都不能有实际值
+  用于让我们的对象或类，满足接口的结构和方法规范！！，规范！
+  ````
+  interface myInterface {
+    name: string,
+    age: number,
+    ifmarry: boolean,
+    showDetail():void
+  }
+  const myDetail2: myInterface = {
+    name: 'my',
+    age: 53,
+    ifmarry: true,
+    showDetail(){
+      console.log(this.name)
+    }
+  }
+  myDetail2.showDetail();
+
+
+
+  interface objInterface {
+    name:string,
+    age：number
+  }
+  function myDetail(nameobj:objInterface){
+     console.log(nameobj.name,nameobj.age)
+  }
+  //参数定义成接口，就必须按照接口的类型和属性来定义
+  myDetail({name:'lyb',age:12})
+
+  ````
+  >一些对象属性只能在对象刚刚创建的时候修改其值。 你可以在属性名前用 readonly来指定只读属性:以后就不可以再进行修改了
+  ````
+  interface Point {
+    readonly x: number;
+    readonly y: number;
+}
+````
+
+
+  >那么接口有什么好处和优势？优势在于，接口可定义一个类的结构！！
+  就可以使用接口中的变量和方法类型
+  ````
+  class myClass implements myInterface {
+    name: string
+    age: number
+    ifmarry: boolean
+    constructor(name: string, age: number, ifmarry: boolean) {
+      this.name = name
+      this.age = age
+      this.ifmarry = ifmarry
+    }
+    showDetail() {
+      console.log(this.name)
+    }
+  }
+  ````
