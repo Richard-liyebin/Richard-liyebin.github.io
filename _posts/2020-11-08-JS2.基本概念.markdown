@@ -113,6 +113,20 @@ tags:
     object: typeof检测 object array （对象，数组，new的实例对象等）返回object
 
 
+  > 注意补充：当变量未声明和已声明未赋值是两个不同的概念,变量未声明时，console会报错，但typeof与已声明未赋值一样会返回undefined
+
+    例如：
+    let name;
+
+    console.log(typeof (name)) //undefined
+    console.log(typeof (age)) //undefined
+    
+    console.log(name) //undefined
+    console.log(age) //Uncaught ReferenceError: age is not defined
+
+
+
+
  7. 转换为布尔值为false的有 ' '空字符串 null undefined NaN 0 
 
 
