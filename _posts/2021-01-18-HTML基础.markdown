@@ -13,3 +13,38 @@ tags:
 ### HTML基础
 
 +  html标签分为单标签和双标签，单标签也叫做空标签（空元素），例如<br/>
+
+#### 1.html语义化标签
+
+    ````
+    为了实现语义化标记，HTML 提供了明确这些区段的专用标签，例如：
+
+            <header>：页眉。
+            <nav>：导航栏。
+            <main>：主内容。主内容中还可以有各种子内容区段，可用<article>、<section> 和 <div> 等元素表示。
+            <aside>：侧边栏，经常嵌套在 <main> 中。
+            <footer>：页脚。
+
+    eg: <body>
+
+            <header>
+                头部内容标题
+            </header>
+
+            <nav>
+                导航内容
+            </nav>
+
+            <main>
+                主体内容
+             <article></article>
+             <section></section>
+            </main>
+
+            <footer>
+                底部内容
+            </footer>
+
+        </body>
+
+    ````

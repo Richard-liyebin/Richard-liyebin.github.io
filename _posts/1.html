@@ -7,23 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./js/vue.js"></script>
+    <style>
+        #root  .myul .myli1 {
+            color: yellow;
+        }
+
+        /* 0 1 3 0 */
+        #root .myul li:nth-child(1) {
+            color: red;
+        }
+
+        /* 0 1 2 1 */
+    </style>
 </head>
 
 <body>
     <div id="root">
-
+        <div class="myp">
+        <ul class="myul">
+            <li class="myli1">123</li>
+            <li>345</li>
+            <li>678</li>
+        </ul>
     </div>
-    <script>
-        const Vm = new Vue({
-            el:'#root', //用于
-            data:{
+    </div>
 
-            },
-            methods:{
-
-            }
-        })
-    </script>
 
 </body>
 

@@ -1,0 +1,47 @@
+---
+layout:     post
+title:      "http"
+subtitle:   "http前端知识"
+date:        2020-03-23
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - http
+---
+ 
+#### 1.http是什么？
+
+    ````
+      1.http：全称为（Hyper Text Transfer Protocol），中文叫做 超文本传输协议
+      是基于 TCP/IP 通信协议来传递数据
+
+      2.基本概念 
+          a.客户端 : WEB用户入网设备，接入网络的电脑，连接wifi的手机，或者浏览器页面，反正指的就是用户端
+          b.服务器：是存储网页，站点和应用的计算机，用于提供网络服务，本质也是计算机
+          c.DNS：域名系统服务器，用于找出你输入域名的真实ip地址
+          d.TCP/IP：定义如何传输数据的协议
+          e.HTTP:定义客户端和服务器之间交流的语言，协议
+         
+      3.地址栏输入地址，发生了什么？
+
+          1.DNS连接
+              a.DNS从浏览器缓存中查找域名的ip地址
+              b.DNS从当前系统中查找域名的ip地址，即hosts文件，浏览器会做一个系统调用（windows里是gethostbyname）
+              c.DNS从路由器中进行查找是否缓存
+              d.DNS从ISP缓存中进行查找（ISP是一种网络运营商给宽带接入提供加速的服务，相当于第三方）
+              e.DNS在ISP中进行递归循环查找
+          2.进行TCP连接(三次握手)
+              a.客户端打开连接，服务端进入Linsten状态
+              b.客户端向服务器发送一个SYN报文
+              c.服务端接收到SYN报文后，回应一个SYN+ACK报文
+              d.客户端收到SYN+ACK报文后会回应一个ACK报文，服务器收到后，三次握手完成
+          3.浏览器发送http请求
+          4.服务端接收到http请求，返回响应数据
+          5.浏览器解析数据，渲染页面
+              a.解析html生成DOM树
+              b.解析css生成css规则树
+              c.遍历生成渲染树
+              d.把数据渲染在页面上
+          6.断开TCP连接（四次挥手）
+    ````
