@@ -1,0 +1,72 @@
+---
+layout:     post
+title:      "JS基础"
+subtitle:   "17.js事件处理程序的简单介绍"
+date:       2021-9-1
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - JavaScript
+---
+
+#### 1.HTML事件处理程序
+````
+<p class="pNode" onclick="showMessage()">xxx<p/>
+````
+#### 2.DOM0级事件处理程序
+````
+<p class="pNode">xxx<p/>
+    let MyNode = document.getElementByClassName('pNode')
+    MyNode.onclick = ()=>{
+        showMessage()
+    }
+
+````
+#### 3.DOM2级事件处理程序
+````
+<p class="pNode">xxx<p/>
+ let MyNode = document.getElementByClassName('pNode')
+ MyNode.addEventListener('click',()=>{
+     showMessage()
+ },boolean)
+````
+#### 4.IE事件处理程序
+````
+let MyNode = document.getElementByClassName('pNode')
+ MyNode.attachEvent('onclick',()=>{
+     showMessage()
+ })
+  MyNode.detachEvent('onclick',()=>{
+     showMessage()
+ })
+````
+
+
+#### 注意
+> event.target 和 event.currentTarget不是一个意思，target是当前我触发事件所在的dom节点，currentTarget是绑定事件的dom节点
+
+````
+<body>
+    <div id="Root">
+        <button class="snake"></button>
+    </div>
+    <script>
+        let myRoot = document.getElementById('Root')
+        myRoot.addEventListener('click', (event) => {
+            console.log(event.target) //button
+            console.log(event.currentTarget) // Root
+        }, true)
+    </script>
+
+</body>
+````
+
+> event.preventDefault()和event.stopPropagation()的区别
+
+````
+event.preventDefault() 阻止事件的默认行为，比如a链接点击默认行为会跳转，阻止跳转
+
+event.stopPropagation() 阻止事件冒泡，用于多个层级dom均绑定事件的时候，点击内层dom，外层事件也会依次触发。阻止外层事件触发
+
+````

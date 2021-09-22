@@ -1,0 +1,57 @@
+---
+layout:     post
+title:      "JS基础"
+subtitle:   "15.创建js对象的几种方式"
+date:       2021-9-1
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - JavaScript
+---
+
+
+### js对象的创建方式
+
+#### 1.工厂模式
+````
+function Person(name, age, detail) {
+    let newObj = new Object()
+    newObj.name = name
+    newObj.age = age
+    newObj.detail = detail
+    newObj.fun = () => {
+        console.log(`my name is ${newObj.name},I am ${newObj.age} years old`)
+    }
+    return newObj
+}
+let person = Person('jack', 20, 'cdc')
+console.log(person.fun())
+````
+#### 2.构造函数模式
+````
+function Homie(name, age, detail) {
+    this.name = name
+    this.age = age
+    this.detail = detail
+    this.fun = () => {
+        console.log(`my name is ${this.name},I am ${this.age} years old`)
+    }
+}
+let homie = new Homie('mike', 24, 'csc')
+console.log(homie.fun())
+````
+#### 3.原型模式
+````
+function Human(){
+
+}
+Human.prototype.name = 'Tom'
+Human.prototype.age = 30
+Human.prototype.fun = function(){
+     console.log(`my name is ${this.name},I am ${this.age} years old`)
+}
+
+let human = new Human()
+console.log(human.fun())
+````

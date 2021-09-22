@@ -1,0 +1,73 @@
+---
+layout:     post
+title:      "JS基础"
+subtitle:   "16.判断对象是否包含某个属性"
+date:       2021-9-1
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - JavaScript
+---
+
+### in 操作符
+````
+let obj = {
+    name : 'tom',
+    age : 23
+}
+console.log('name' in obj) // true
+
+function Person(){
+    this.name = name;
+    this.age = age;
+    this.sayHi = ()=>{
+        console.log(this.name,this.age)
+    }
+}
+let personObj = new Person('mike',23)
+console.log('name' in personObj) //true
+
+//in 操作符不仅可以检测实例上的属性，还能够检测到继承的属性
+````
+
+### hasOwnPrototype
+````
+let obj = {
+    name : 'tom',
+    age : 23
+}
+console.log(obj.hasOwnProperty('name')) //true
+function Person(){
+    this.name = name;
+    this.age = age;
+    this.sayHi = ()=>{
+        console.log(this.name,this.age)
+    }
+}
+let personObj = new Person('mike',23)
+console.log(obj.hasOwnProperty('name')) //false
+
+//hasOwnproperty 只能检测到实例自身的属性，而不能检测到继承的属性
+````
+
+### !==
+````
+let obj = {
+    name : 'tom',
+    age : 23
+}
+
+console.log(obj.name!==undefined)
+````
+
+### Object.keys().includes()
+````
+let obj = {
+    name : 'tom',
+    age : 23
+}
+console.log(Object.keys(obj)) // ["name","age"]
+console.log(Object.keys(obj).includes('name')) //true
+
+````
