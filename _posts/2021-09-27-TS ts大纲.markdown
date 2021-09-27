@@ -1,0 +1,279 @@
+---
+layout:     post
+title:      "TS基础"
+subtitle:   "TS基础"
+date:       2021-9-27
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - TypeScript
+---
+
+### TypeScript
+
+  + 1. 为什么要用TS,JS不香吗？
+    > 首先，Js是一门解释型语言，而不是一门编译型语言，那么什么是解释型语言，什么是编译型语言，我们可以这样理解，在我们学习英语的时候，有的人会首先学习英文字母，语法，直到了解完全部英语的知识，才会去实践，读写。这就叫做编译型语言，而解释型语言，一开始我们在不知道语法的情况下，直接背单词，然后开始实践，不需要了解太多，这也就暴露出JS的弊端，由于JS是解释型语言，不需要进行编译，所以会出现很多比如变量的问题，JS也属于动态类型的语言，TS属于静态类型的语言，动态类型即是在运行的时候才会进行类型检查。静态类型的TS在运行时会先编译成JS，此期间会进行类型检查，这也就是为什么我们用TS的原因！
+
+  + 2. 什么是强类型，弱类型
+    > 强类型也就是在编译的时候就能确定类型的语言，并且编译时无法更改。而弱类型在执行的时候才能确定类型。没有好不好，二者各有好处，强类型安全，因为它事先已经确定好了，而且效率高。弱类型更灵活，但是效率低，而且出错概率高。强类型一般用于编译型编程语言，如 c++,java,c#,pascal 等,弱类型相比而言不安全，在运行的时候容易出现错误，但它灵活，多用于解释型编程语言，如 javascript,vb 等
+
+# 基础知识梳理大纲
+
+ ## 一.基础知识
+
+  ### 1.基础类型
+  ````
+  1.布尔值  
+
+  let BoolVal:boolean = false;
+
+  2.数字 
+
+  let NumVal:number = 6;
+
+  3.字符串 
+
+  let StrVal:string = 'xxx'   let StrVal:string = `hello ${name}` //字符串也可以使用模板字符串
+
+  4.数组 
+
+  let ArrVal: number[] = [1,2,3,4]  let ArrVal: string[] = ['a','b','c','d']
+  定义数组还可以使用数组泛型
+
+  let ArrVal: Array<number> = [1,2,3,4] let ArrVal:Array<string> = ['a','b','c','d']
+
+  let ArrVal: ReadonlyArray<number> = [1,2,3,4] //只读数组，确保数组创建后再也不可以修改
+  5.元组（混合数组）
+
+  let ArrVal:[string,number,string] = ['a',1,'b']  //类型和值的顺序不可以调换，必须按照index进行匹配
+
+
+  6.枚举类型
+
+  let enum Color {red:1,greem:2,blue:3}
+  let c: Color = Color.green
+
+
+  7.Any 类型 （用于在目前不清楚类型的变量指定一个类型）
+  let notSure:any = 4;
+  let list:any[] = [1,'a',true]
+  notSure = 'xxx'; //ok
+
+  8.void类型(用于表示没有类型，一般用于一个函数没有返回值时)
+
+  function Fun():void{
+    console.log('have no return')
+  }
+
+  9.object类型(表示非原始类型，，也就是除number，string，boolean，symbol，null或undefined之外的类型。)
+  function create(o: object | null): void{
+
+  }
+
+  create({ prop: 0 }); // OK
+  create(null); // OK
+  create(42); // Error
+  create("string"); // Error
+  create(false); // Error
+  create(undefined); // Error·
+
+  10.类型断言
+  let someValue: any = "this is a string";
+
+  let strLength: number = (someValue as string).length;
+  当你明确的知道返回值的类型时，断言可以更确切的知道他的类型
+
+  ````
+
+  ### 2.声明变量
+
+  ### 3.接口
+  > 概念：接口是用于对值所具有的结构进行类型检查
+
+  ````
+  1.基本使用
+  interface labelValue{
+      label: string;
+      name: string
+      content?: string;
+  }
+  function printLabel(labelObj:labelValue){ 
+      console.log(labelObj.name)
+      console.log(labelObj.lable)
+      console.log(labelObj.content)
+  }
+  printLabel({label:'aaa',name:'bbb',content:'ccc'}) //ok
+  printLabel({label:'aaa',name:'bbb'}) //ok content 可选属性不会报错
+  printLabel({label:'aaa',name:'bbb',content:'ccc',age:23})  //error 接口对象中不存在age属性 
+  //定义了一个lableValue的接口，指定这个对象里必须存在一个类型为string的label属性，content?代表属性可有可无
+  //避免参数出错，避免动态添加不必要的参数
+
+
+  2.只读属性
+  a.对象
+  interface Point{
+    readonly x: number;
+    readonly y: number;
+  }
+
+  let p:Point = {x:10,y:10} //此时x,y已经再也不可改变了 
+
+  interface SquareConfig {
+    color?: string;
+    width?: number;
+    [propName: string]:any;  //有任意数量的其它属性，那么我们可以这样定义
+  }
+  b.数组
+  let arrOne:<ReadonlyArray><number> = [1,2,3,4,5]
+  arrOne[0] = 2 //error
+  arrOne[1] = 5 //error
+  
+    只读数组赋值后，赋值后的新数组不可修改，除非使用类型断言
+  let arrOne:<Array><number> = [1,2,3,4]
+  let arrTwo:<ReaonlyArray><number> = arrOne  
+  arrOne = arrTwo //error 不可以把只读数组赋值给普通数组
+  arrOne = arrTwo as <Array><number>
+  
+   readonly和const的使用
+   最简单判断该用readonly还是const的方法是看要把它做为变量使用还是做为一个属性。 做为变量使用的话用 const，若做为属性则使用readonly。
+   
+   
+  3.函数类型
+  interface funInterface{
+  (argumentOne:string,argumentTwo:number):string
+  } 
+  //函数类型的接口，包含了参数类型，返回值类型
+  参数名称不唯一，函数形参可以随意命名，只要对应位置的类型相同就行
+  let myfun:funInterface;
+  myfun = function(name:string,age:number){
+  	return `my name is ${name},my age is ${age}`
+  }
+ 
+  3.使用场景
+	a.参数校验
+	b.防止参数写错而无法得到正确的结果
+	
+	
+  
+ 
+  ````
+
+  ### 4.类
+
+```
+class Greeter {
+    greeting: string;
+    constructor(message: string) {
+        this.greeting = message;
+    }
+    greet() {
+        return "Hello, " + this.greeting;
+    }
+}
+
+let greeter = new Greeter("world");
+```
+
+
+
+  ### 5.函数
+
+````
+function add(x: number, y: number): number {
+    return x + y;
+}
+
+let myAdd = function(x: number, y: number): number { return x + y; };
+````
+
+
+
+  ### 6.泛型
+
+````
+概念：泛型其实就是为了在重用组件的时候，如果出现了参数类型多种类型的数据时，也能够判断并返回我们想要的正确的数据类型。
+
+1.泛型基础
+
+例如：
+//这个函数虽然可以接收任意类型的参数，但是返回值也是不可确定的,并且还会因为我们传递的数据类型而偶尔产生错误
+function myFun(arg:any):any{
+	console.log(arg.length) 
+	return arg
+}
+myFun(123)//error 如果我们传递的arg是一个number，那么他就不存在length属性
+//泛型
+function myFun<T>(arg:T):T{
+	return arg
+}
+myFun<string>('hello')
+
+function myFun<T>(arg:T[]):T{
+	console.log(arg.length) 
+	return arg
+}
+myFun<number>([1,2,3,4])
+
+通过泛型，我们就可以在定义方法和传递实参的时候，知道我们返回的数据类型是什么，知道我们传入的数据类型是什么。
+
+
+2.泛型接口
+interface GenericIdentityFn {
+    <T>(arg: T): T;
+}
+
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+let myIdentity: GenericIdentityFn = identity;
+
+3.泛型类
+````
+
+
+
+  ### 7.枚举
+
+````
+enum Direction {
+    Up = 1,
+    Down,
+    Left,
+    Right
+}
+如上，我们定义了一个数字枚举， Up使用初始化为 1。 其余的成员会从 1开始自动增长。 换句话说， Direction.Up的值为 1， Down为 2， Left为 3， Right为 4。
+
+我们还可以完全不使用初始化器
+enum Direction {
+    Up,
+    Down,
+    Left,
+    Right,
+}
+````
+
+
+
+  ### 8.类型推论
+  > 概念：在ts中，有些没有明确的指出类型的地方，类型推论会帮助提供类型
+  ````
+        let name = 'richard'  
+        let age = 21 
+        //此时ts明确
+  ````
+
+  ### 9.类型兼容性
+
+  ### 10.高级类型
+
+  ### 11.ts高级用法
+
+
+  ## 二.项目中的ts
+
+  ### 1.tsconfig
+
+  ### 2.兼容性
+
