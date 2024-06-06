@@ -1,0 +1,50 @@
+---
+layout:     post
+title:      "CSS 笔记心得"
+subtitle:   "css父元素高度坍塌,子元素外边距塌陷"
+date:       2020-11-08
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - CSS
+---
+
+----
+  ### css父元素高度坍塌
+  > 当子元素设置了margin时，有可能引起父元素高度有塌陷的现象
+  >解决方法有几种
+  ````
+  1.父元素加border;
+  2.父元素加padding;
+  3.父元素设置 overflow:hidden;
+
+  ````
+
+  ### css子元素垂直外边距发生合并 
+  > 当两个div在普通文档流中的垂直外边距，才会发生外边距合并，行内元素，浮动元素，绝对定位是无法发生外边距合并的
+  ````
+  1.只给一个元素增加外边距（相当于有一个不加外边距自然就不存在这个问题）
+  2.浮动，使之脱离文档流 float:left;
+  3.绝对定位，使之脱离文档流 position:absolute;fixed;
+  4.把一个盒子变成行内块，就可以了 给其中一个盒子设置 display:inline-block;
+  5.给其中一个盒子增加一个父级嵌套，然后给父级嵌套添加overflow:hidden 使之不在同一个BFC下
+
+  ````
+  ### 脱离文档流的几种方式
+  ````
+  浮动（float）
+
+  绝对定位（position: absolute）
+
+  固定定位（position: fixed）
+
+  绝对定位（position: relative）与 transform: translate() 结合使用
+
+  flex 布局中的 flex: 1 或 auto 使子项脱离父容器的控制
+
+  grid 布局中的 auto-placement 特性
+
+  使用 z-index 使元素在不同层级上显示
+
+  ````
