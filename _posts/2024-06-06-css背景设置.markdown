@@ -1,0 +1,47 @@
+---
+layout:     post
+title:      "CSS 笔记心得"
+subtitle:   "css背景"
+date:       2020-11-08
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - CSS
+---
+----
+
+### 1.background-color 设置背景颜色
+
+    > 背景颜色是最简单的背景属性，rgba(red,green,blue,opacity(0-1))  或者 #fff 都可以设置
+    > 注意 rgba设置颜色特别是透明度的颜色，在父级中设置子级不会继承，然而如果直接在父级设置 opacity:0.5，在子元素也会变成透明。 
+
+### 2.background-image 设置背景图像
+    > background-image:url('路径名称')
+    > background-image:inherit 在子级中设置自动继承父级的背景图片！
+
+### 3.background-size **重要
+    > background-size: contain 图片自适应填充  cover 背景图片完全填充，但是有可能超出；**重要！ 百分比 10%（100px） 10%(100px) 填充 可以填满背景框，并且不超出，只是可能背景图会扭曲，但是这是最好的选择！！！   
+    
+### 3.background-position **重要
+    > background-position: center left right top bottom 或者设置px 把图片定位在背景框的相应位置，一般在center最标准！！
+
+### 4.background-repeat 
+    > background-repeat: repeat 图片平铺（当图片不够大时，自动加图） no-repeat（图片不平铺，有多大就多大，可能占不满） inherit（自动继承父级的repeat属性） repeat-x repeat-y
+
+### 5.background-origin
+
+### 6.background-clip
+    > background-clip:content-box;背景被裁剪到内容框相当于背景只覆盖文字。 border-box; 背景被裁剪到边框盒背景覆盖到边框。 padding-box;背景被裁剪到内边距框背景覆盖到内边距。
+### 7.background-attachment
+    > background-attachment 属性设置背景图像是否固定或者随着页面的其余部分滚动。 scorll 背景图会随着页面的滚动而滚动 fixed 背景图片固定
+
+### 8 设置背景自动填充满图片并且不平铺
+    ```
+    background-image(url);
+    background-repeat；no-repeat; //不平铺
+    background-position:center;  //位置设置在中心
+    background-size:100% 100%;  //背景尺寸 自动撑满
+    background-attachment:fixed; //固定背景
+
+    ```
