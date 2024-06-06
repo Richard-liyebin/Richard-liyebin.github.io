@@ -129,3 +129,5 @@ Shift+ins 粘贴
   + 5 文件提交忽略 (文件中添加忽略的文件即可)
     > .gitignore
 
+
+附上详细链接 https://blog.csdn.net/name_sakura/article/details/124427406
