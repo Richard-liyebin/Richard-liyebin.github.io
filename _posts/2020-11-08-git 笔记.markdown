@@ -103,7 +103,17 @@ Shift+ins 粘贴
   + 15 删除文件（提交到远程，远程也会更新）
     > git rm 文件名
 
-  ### b.连接远程仓库
+  ### b.生成ssh密钥 为远程仓库建立连接
+  + 1 为什么要生成ssh，ssh的作用是什么
+    > 首先ssh密钥是我们本地仓库连接github远程仓库的钥匙，因为本地仓库和github之间的连接是通过ssh加密的
+    > 创建ssh key ：ssh-keygen -t rsa -C 'youremail@example.com'
+    > 查看自己的ssh key： cat ~/.ssh/id_rsa.pub  
+    > 在C盘也可以看到 ssh文件  目录： C:\User\number\ssh\id_rsa.pub
+    > 远端的github仓库配置添加上ssh 在设置 setting中去配置ssh key ，即可连接使用clone等，连接远端仓库
+    
+    生成ssh密钥
+
+  ### c.连接远程仓库
   + 1 连接到远程仓库
     > git remote add 仓库名（默认origin）仓库地址 git.xxx
 
@@ -118,3 +128,4 @@ Shift+ins 粘贴
 
   + 5 文件提交忽略 (文件中添加忽略的文件即可)
     > .gitignore
+
