@@ -2,7 +2,7 @@
 layout:     post
 title:      "CSS 笔记心得"
 subtitle:   "css背景"
-date:       2020-11-08
+date:       2024-06-06
 author:     "Lyb"
 header-img: "img/post-bg-unix-linux.jpg"
 tags:
@@ -36,12 +36,37 @@ tags:
 ### 7.background-attachment
     > background-attachment 属性设置背景图像是否固定或者随着页面的其余部分滚动。 scorll 背景图会随着页面的滚动而滚动 fixed 背景图片固定
 
-### 8 设置背景自动填充满图片并且不平铺
+### 8.设置背景自动填充满图片并且不平铺
     ```
     background-image(url);
     background-repeat；no-repeat; //不平铺
     background-position:center;  //位置设置在中心
     background-size:100% 100%;  //背景尺寸 自动撑满
     background-attachment:fixed; //固定背景
+
+    ```
+### 9.给背景图片设置透明度
+    > 在需要设置背景图片元素当成父级元素设置 position:relative;
+    > 在需要设置背景元素后面或者前面设置伪类::before ::after ，使其脱离文档流，覆盖在父级上设置
+
+    ```
+    .father{
+        position:relative;
+        width:
+        height:
+    }
+    .father::before{
+            position: absolute;
+            content: ''; //必须要有content 设置为‘’
+            right: 0; //必须要
+            top: 0;//必须要
+            left: 0;//必须要
+            bottom: 0;//必须要
+            background-image: url('./4.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            opacity: 0.5;//必须要
+    }
 
     ```

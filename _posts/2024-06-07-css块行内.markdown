@@ -1,0 +1,52 @@
+---
+layout:     post
+title:      "CSS 笔记心得"
+subtitle:   "css-行内块"
+date:       2024-06-07
+author:     "Lyb"
+header-img: "img/post-bg-unix-linux.jpg"
+tags:
+    - 前端开发
+    - CSS
+---
+
+
+
+
+
+### 1. block：
+
+块级元素在视觉上的格式为 block 即块。
+元素占有 100% 父元素的宽度, 和其内容无关。
+元素默认从上到下垂直堆叠。
+盒子模型适用。
+绝大多数 html 元素默认都是 block-level 块级元素，例如：
+body, main, header, footer, section, nav, aside, div, h1~h6, p, ul, ol, li, 等等
+
+设置 CSS 属性 display: block; 可以将其他类型盒子转换为 block 级盒子
+
+ ### 2.inline
+仅占用其内容所需的空间
+在元素之后或之前都不产生换行。
+盒子模型以不同的方式被应用：height 和 width 不起作用
+padding 和 margin 仅在水平方向（即左右方向）起作用。
+生成 inline 盒子的相应的 inline 元素有: span, a, img, strong, em, button, 等等
+
+设置 CSS 属性 display: inline; 可以将盒子转换为 inline-level boxes
+
+### 3.inline-block 
+inline-block 介于 inline 和 block 两者之间。
+
+从外部看起来像 inline，在内部表现得像 block。
+只占用内容需要的空间
+不产生换行。
+width, height, margin, padding 四种属性全都适用。
+
+dsipaly: inline-block;   
+1
+大多数时候，我们实际上会不理会 display 设置，而只是使用预定义的盒子类型，因为默认情况下，它们确实很有意义。少数情况下使用 display 属性很方便。
+
+<button> 是 inline-block，但可以设置 width 属性。
+
+4. 特殊的元素 img
+img 是 inline 内联元素，因为用浏览器 dev-tool 查看属性显示的就是 inline。 但在行为上它又表现得像 inline-block 元素，例如，可以设 width 和 height 等。

@@ -2,7 +2,7 @@
 layout:     post
 title:      "CSS 笔记心得"
 subtitle:   "css父元素高度坍塌,子元素外边距塌陷"
-date:       2020-11-08
+date:       2024-06-06
 author:     "Lyb"
 header-img: "img/post-bg-unix-linux.jpg"
 tags:
@@ -46,5 +46,51 @@ tags:
   grid 布局中的 auto-placement 特性
 
   使用 z-index 使元素在不同层级上显示
+
+  ````
+
+  ### css 清除浮动几种方式
+  
+  ##### 1.父级后面加伪类
+  ````
+  .clearfix::after { 
+  display: block;
+  content: "";
+  height: 0;
+  overflow: hidden;
+  clear: both;
+  }
+  .clearfix {
+  ·zoom: 1;
+  } 
+
+  使用clear要注意的地方
+
+  clear只会清除自身所在前面的元素的浮动
+  clear属性只作用在块级元素上
+  因为clear只会清除前面元素的浮动，因此我们要在容器的最后面添加一个块级元素，并让该元素使用clear: both属性 别忘了 zoom:1;
+
+  最常见的做法就是在父容器身上使用::after
+  ````
+  ##### 2.子元素在浮动尾部添加空div标签，添加上样式clear:both；
+  ````
+  .son1 {
+    clear:both;
+  }
+  ````
+  ##### 3.给父级div定义overflow:hidden 或者 overflow:auto;
+
+  ````
+  .father{
+    overflow:hidden;
+  }
+
+  ````
+  ##### 4.浮动元素的父级div定义为表格display:table
+
+  ````
+  .father{
+    dispaly:table
+  }
 
   ````
