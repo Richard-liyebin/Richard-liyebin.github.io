@@ -9,10 +9,13 @@ tags:
     - 前端开发
     - CSS
 ---
- ### 1.display:flex inline-flex 弹性布局
+
+### 1.display:flex inline-flex 弹性布局
 
  > 设置弹性布局，创建一个弹性容器,flex属性可以使用在块级元素上，inline-flex可以使用在行内元素上，每一个弹性盒子都存在一个主轴和一个交叉轴，主轴一般从左到右，交叉轴一般从上到下！
- ### 2.flex-direction 决定主轴的方向，水平或者垂直 
+
+### 2.flex-direction 决定主轴的方向，水平或者垂直 
+
  ````
     row（默认值）：主轴为水平方向，起点在左端。
     ow-reverse：主轴为水平方向，起点在右端。
@@ -21,18 +24,21 @@ tags:
     如果主轴垂直，那么交叉轴自然就是水平！
 
  ````
- ### 3.flex-wrap 换行不换行以及换行的方向
+### 3.flex-wrap 换行不换行以及换行的方向
+
  ````
     nowrap（默认）：不换行
     wrap：换行，第一行在上方。
     wrap-reverse：换行，第一行在下方。
 
  ````
-#### flex-flow属性  flex-direction flex-wrap 的混合方式
+### 4.flex-flow属性  flex-direction flex-wrap 的混合方式
+
  ````
     flex-flow: <flex-direction> || <flex-wrap>;
  ````
- ### 4.justify-content 定义了项目在主轴上的对齐方式 默认相当于横坐标
+### 5.justify-content 定义了项目在主轴上的对齐方式 默认相当于横坐标 （justify-items属性不用管，一般无效）
+
  ````
     flex-start（默认值）：左对齐
     flex-end：右对齐
@@ -41,7 +47,8 @@ tags:
     space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
  ````
 
- ### 5.align-items 定义项目在交叉轴上如何对齐 默认相当于纵坐标
+### 6.align-items 定义项目在交叉轴上如何对齐 默认相当于纵坐标（一起对齐）
+
  ````
     flex-start：交叉轴的起点对齐。
     flex-end：交叉轴的终点对齐。
@@ -50,23 +57,8 @@ tags:
     stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
 
  ````
+### 7.align-content 定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性跟align-items一样（比如弹性布局多行换行的时候，就会根据每一行的轴线进行居中）
 
- ### 6.align-self属性 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。（子元素设置）
- ````
-    align-self: auto | flex-start | flex-end | center | baseline | stretch;
- ````
-
- ### 7.order属性 定义项目的排列顺序。数值越小，排列越靠前，默认为0。(子元素上设置)*****重要
- ````
-    order: <integer>;
- ````
-
- ### 8.flex-grow属性  定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大（子元素设置） 
-````
-    flex-grow: <number>; /* default 0 */
-````
- 
- ### 9.align-content 定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
  ````
     flex-start：与交叉轴的起点对齐。
     flex-end：与交叉轴的终点对齐。
@@ -76,16 +68,39 @@ tags:
     stretch（默认值）：轴线占满整个交叉轴。
 
  ````
+> 注意align-items与align-content的区别 ,当页面中弹性换行的时候，align-items会一起居中，align-content会分开根据每一行轴线居中（分开居中）。
+
+### 8.align-self属性 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。（子元素设置）
+
+ ````
+    align-self: auto | flex-start | flex-end | center | baseline | stretch;
+ ````
+
+### 9.order属性 定义项目的排列顺序。数值越小，排列越靠前，默认为0。(子元素上设置)*****重要
+
+ ````
+    order: <integer>;
+ ````
+
+### 10.flex-grow属性  定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大（子元素设置） 
+ 
+````
+    flex-grow: <number>; /* default 0 */
+````
+ 
 
 
-### flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。以适应其弹性容器中可用的空间***也可以设置flex:1,使某一个元素自适应屏幕，相当于扩大！！！
+
+### 11.flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。以适应其弹性容器中可用的空间***也可以设置flex:1,使某一个元素自适应屏幕，相当于扩大！！！
+
 ````
 .item {
   flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
 }
 ````
- ### 11.flex-shrink属性 缩小
- ### 12.flex-basis属性
+ ### 12.flex-shrink属性 缩小
+
+ ### 13.flex-basis属性
 
 
  ### 注意！！设为 Flex 布局以后，子元素的float、clear和vertical-align等属性都将失效
